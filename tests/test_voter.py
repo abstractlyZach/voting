@@ -16,6 +16,14 @@ def test_convert_to_string(turtle_voter):
     assert str(turtle_voter) == "turtle voter"
 
 
+def test_repr(turtle_voter):
+    assert repr(turtle_voter) == 'Voter(["turtle", "tiger", "monkey"])'
+
+
+def test_convert_to_csv_line(turtle_voter):
+    assert turtle_voter.convert_to_csv_line() == "turtle,tiger,monkey"
+
+
 def test_elminate_top_choice(turtle_voter):
     turtle_voter.eliminate_top_choice()
     assert turtle_voter.top_choice == "tiger"
