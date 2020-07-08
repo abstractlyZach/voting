@@ -5,6 +5,7 @@ from . import voter
 
 
 EMPTY_VOTE = ""
+DELIMITER = ","
 
 
 def get_voters_from_ballots(path: str) -> typing.List[voter.Voter]:
@@ -31,4 +32,9 @@ def convert_ballot_to_ranked_choice(ballot: typing.Dict) -> typing.List:
 
 
 def get_voters_from_ranked_choice_vote(path: str) -> typing.List[voter.Voter]:
-    pass
+    voters = []
+    with open(path, "r") as infile:
+        for line in infile:
+            ranked_choices = line.strip().split(DELIMITER)
+            voters.append(voter.Voter(ranked_choices))
+    return voters
