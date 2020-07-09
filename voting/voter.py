@@ -2,6 +2,11 @@ import typing
 
 
 class Voter:
+    """
+    Contains a single voter's preferences and tracks their current state in an election.
+    If a top choice is eliminated, this class will know it.
+    """
+
     def __init__(self, choices: typing.List[str]) -> None:
         if len(choices) <= 0:
             raise Exception(f"No choices listed when creating a voter")
